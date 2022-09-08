@@ -32,21 +32,27 @@ def fill_board(board: array, num_arr: array) -> None:
     """Fills the given board with the numbers in num_arr in a logical way"""
 
     num_arr.sort()
+    min_num = 0
+    max_num = len(num_arr) - 1
 
     for symb_ind in range(1, len(board) - 1, 2):
         num_ind = symb_ind - 1
 
         if is_greater_than_symb(board, symb_ind):
-            board[num_ind] = num_arr.pop()
+            board[num_ind] = num_arr[max_num]
+            max_num -= 1
 
         else:
-            board[num_ind] = num_arr.pop(0)
+            board[num_ind] = num_arr[min_num]
+            min_num += 1
 
     if is_greater_than_symb(board, symb_ind):
-        board[num_ind + 2] = num_arr.pop()
+        board[num_ind + 2] = num_arr[max_num]
+        max_num -= 1
 
     else:
-        board[num_ind + 2] = num_arr.pop(0)
+        board[num_ind + 2] = num_arr[min_num]
+        min_num += 1
 
 
 def solve_puzzle(board: array, num_arr: array) -> str:
