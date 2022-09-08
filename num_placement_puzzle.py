@@ -28,37 +28,25 @@ def is_greater_than_symb(arr: array, ind: int) -> bool:
     return False
 
 
-def min_(arr: array) -> int:
-    """Returns the minimum num of the input array and removes it"""
-    num = min(arr)
-    arr.remove(num)
-    return num
-
-
-def max_(arr: array) -> int:
-    """Returns the max num of the input array and removes it"""
-    num = max(arr)
-    arr.remove(num)
-    return num
-
-
 def fill_board(board: array, num_arr: array) -> None:
     """Fills the given board with the numbers in num_arr in a logical way"""
+
+    num_arr.sort()
 
     for symb_ind in range(1, len(board) - 1, 2):
         num_ind = symb_ind - 1
 
         if is_greater_than_symb(board, symb_ind):
-            board[num_ind] = max_(num_arr)
+            board[num_ind] = num_arr.pop()
 
         else:
-            board[num_ind] = min_(num_arr)
+            board[num_ind] = num_arr.pop(0)
 
     if is_greater_than_symb(board, symb_ind):
-        board[num_ind + 2] = max_(num_arr)
+        board[num_ind + 2] = num_arr.pop()
 
     else:
-        board[num_ind + 2] = min_(num_arr)
+        board[num_ind + 2] = num_arr.pop(0)
 
 
 def solve_puzzle(board: array, num_arr: array) -> str:
