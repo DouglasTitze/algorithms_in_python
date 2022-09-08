@@ -1,0 +1,19 @@
+import random as rd
+
+
+def create_board(n):
+    board = []
+
+    for i in range(n):
+        if i // 2 == 0 and i != 0:
+            if rd.randint(0, 1) == 0:
+                board.append("<")
+            else:
+                board.append(">")
+
+        else:
+            board.append(float("inf"))
+
+    return board
+
+print(create_board(10))
