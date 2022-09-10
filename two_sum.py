@@ -21,6 +21,8 @@ def two_sum(arr, target):
 
 
 def two_sum_hash_tables(arr: array, target: int) -> None:
+    """This prints all the combinations of the two sum problem, but uses a hashtable to store old values that it has iterated through to make computation faster"""
+
     dic = {}
 
     for index, num in enumerate(arr):
